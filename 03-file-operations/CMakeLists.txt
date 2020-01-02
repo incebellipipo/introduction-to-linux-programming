@@ -11,5 +11,6 @@ project(fio)
 
 add_executable(cat src/cat.c)
 add_executable(random src/random.c)
+add_executable(ls src/ls.c)
 
 configure_file(src/read-this.txt ${CMAKE_BINARY_DIR} COPYONLY)
