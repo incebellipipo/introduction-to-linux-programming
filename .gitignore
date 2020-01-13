@@ -181,3 +181,4 @@ tags
 
 # End of https://www.gitignore.io/api/vim,linux,macos,cmake,emacs,sublimetext,visualstudiocode
 build
+.vscode/launch.json
