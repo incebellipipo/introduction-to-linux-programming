@@ -2,15 +2,24 @@ cmake_minimum_required(VERSION 3.5.1)
 
 set(CMAKE_CXX_STANDARD 11)
 
-project(fio)
+project(03-file-operations)
 
-# include_directories(include)
+add_executable(cat 
+  src/cat.c
+)
 
-# add_library(lib${PROJECT_NAME}-dev src/${PROJECT_NAME}/${PROJECT_NAME}.cpp)
-# target_link_libraries(lib${PROJECT_NAME}-dev)
+add_executable(random 
+  src/random.c
+)
 
-add_executable(cat src/cat.c)
-add_executable(random src/random.c)
-add_executable(ls src/ls.c)
+add_executable(ls 
+  src/ls.c
+)
 
-configure_file(src/read-this.txt ${CMAKE_BINARY_DIR} COPYONLY)
+add_executable(size 
+  src/size.c
+)
+
+configure_file(src/read-this.txt 
+  ${CMAKE_BINARY_DIR}/${PROJECT_NAME} COPYONLY
+)

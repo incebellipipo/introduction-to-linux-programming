@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
+#include <string.h>
 
 int main(int argc, char** argv) {
 
   int _fd = open("/dev/random", O_RDONLY);
 
   if ( _fd < 0 ) {
-    return EXIT_FAILURE;
+    fprintf(stderr, "Can't open /dev/random: %s\n", strerror(errno));
+    exit(EXIT_FAILURE);
   }
   
   float data;
