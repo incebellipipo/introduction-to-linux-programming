@@ -20,6 +20,14 @@ add_executable(size
   src/size.c
 )
 
+add_executable(touch
+  src/touch.c
+)
+
+add_executable(tee
+  src/tee.c
+)
+
 configure_file(src/read-this.txt 
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME} COPYONLY
 )
