@@ -4,6 +4,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 project(00-introduction)
 
+include_directories(include)
+
 add_executable(arguments 
   src/arguments.c
 )
