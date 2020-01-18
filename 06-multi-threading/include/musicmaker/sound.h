@@ -2,6 +2,11 @@
 #define SOUND_H_
 
 #include <sys/types.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_audio.h>
+#include <math.h>
+
+SDL_AudioSpec spec;
 
 /* These are in charge of maintaining our sine function */
 float sinPos;
@@ -20,6 +25,10 @@ struct play_sound_args {
 };
 
 void generate_wave(void* data, u_int8_t *stream, int len);
+
+void open_audio();
+
+void close_audio();
 
 void play_sound(void* args);
 
