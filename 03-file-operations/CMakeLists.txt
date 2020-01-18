@@ -28,6 +28,10 @@ add_executable(tee
   src/tee.c
 )
 
+add_executable(rm
+  src/rm.c
+)
+
 configure_file(src/read-this.txt 
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME} COPYONLY
 )
