@@ -6,18 +6,18 @@ project(08-http-server-fantasy)
 
 include_directories(include)
 
-add_library(fantasy-server
-  src/fantasy-server/fantasy-server.c
+add_library(fantasy_server
+  src/fantasy_server/fantasy_server.c
 )
 
-target_link_libraries(fantasy-server
+target_link_libraries(fantasy_server
   pthread
 )
 
 add_executable(server
-  src/fantasy-server/server.c
+  src/fantasy_server/server.c
 )
 
 target_link_libraries(server
-  fantasy-server
+  fantasy_server
 )
