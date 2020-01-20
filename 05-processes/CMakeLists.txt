@@ -22,6 +22,10 @@ add_executable(signals
   src/signals.c
 )
 
+add_executable(piping
+  src/piping.c
+)
+
 add_executable(bsh
   src/bizimshell/bsh.c
 )
