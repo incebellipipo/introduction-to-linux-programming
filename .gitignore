@@ -183,3 +183,6 @@ tags
 build
 .vscode/launch.json
 .vscode/settings.json
+
+00-introduction/make-example/main
+!00-introduction/make-example/Makefile
