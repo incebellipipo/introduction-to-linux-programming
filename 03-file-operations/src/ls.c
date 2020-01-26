@@ -5,6 +5,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+// man 7 inode
+// man 2 stat
+
 int main(int argc, char** argv) {
 
   DIR *_d;
