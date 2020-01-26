@@ -38,4 +38,4 @@ Example source code located is [std-descriptors.c](src/std-descriptors.c).
 
 ### Memory allocation
 
-We can request additional memory in run-time from OS. This is done by calls like `malloc` `calloc` `realloc` and `free`. Example source code located is [memory-allocations.c](src/memory-allocations.c).
+We can request additional memory in run-time from OS. This is done by calls like `malloc` `calloc` `realloc` and `free`. Example source code located is [memory-allocation.c](src/memory-allocation.c).
