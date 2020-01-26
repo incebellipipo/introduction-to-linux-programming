@@ -32,6 +32,10 @@ add_executable(rm
   src/rm.c
 )
 
+add_executable(mkdir
+  src/mkdir.c
+)
+
 configure_file(src/read-this.txt 
   ${CMAKE_BINARY_DIR}/${PROJECT_NAME} COPYONLY
 )
