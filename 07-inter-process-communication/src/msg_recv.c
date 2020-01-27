@@ -20,25 +20,14 @@ ssize_t msglen(msg m) {
 
 int main(int argc, char** argv) {
 
-  int msgid = msgget(IPC_PRIVATE, 0600 | IPC_CREAT);
+  key_t k = ftok("msq_example", 42);
+
+  int msgid = msgget(k, 0600 | IPC_CREAT);
   if( msgid < 0) {
     perror("msgget");
     exit(EXIT_FAILURE);
   }
 
-  pid_t cpid = fork();
-  if(cpid == 0) {
-    msg m;
-    m.mtype = 42;
-    strcpy(m.mtext, "All this time?\0");
-    if (msgsnd( msgid, &m, msglen(m), 0) < 0) {
-      perror("msgsnd");
-      exit(EXIT_FAILURE);
-    }
-    printf("sizeof: %lu\n",msglen(m));
-    exit(EXIT_SUCCESS);
-  }
-  wait(NULL);
   msg m;
   int r;
   if ( ( r = msgrcv(msgid, &m, BUFSIZ, 42, 0) ) < 0) {

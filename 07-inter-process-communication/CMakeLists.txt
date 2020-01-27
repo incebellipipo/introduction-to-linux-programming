@@ -13,3 +13,11 @@ add_executable(shm_example
 add_executable(msg_example
   src/msg_example.c
 )
+
+add_executable(msg_send
+  src/msg_send.c
+)
+
+add_executable(msg_recv
+  src/msg_recv.c
+)
