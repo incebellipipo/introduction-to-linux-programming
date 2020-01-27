@@ -47,6 +47,11 @@ int main(int argc, char** argv) {
   } while(stop);
   kill(cpid, SIGINT);
   wait(NULL);
-  fprintf(stdout, "\nPARENT EXITS!\n");
+  fprintf(stdout, "PARENT EXITS!\n");
+
+  fprintf(stdout, "Removing shared memory for clean exit\n");
+
+  shmctl(shmid, IPC_RMID, 0);
+
   return 0;
 } 
