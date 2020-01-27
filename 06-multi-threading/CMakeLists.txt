@@ -15,7 +15,17 @@ target_link_libraries(mutex_example pthread)
 add_executable(simple_multi_threading
   src/simple_multi_threading.c
 )
-target_link_libraries(simple_multi_threading pthread)
+target_link_libraries(simple_multi_threading 
+  pthread
+)
+
+add_executable(func_pointer_threading
+  src/func_pointer_threading.c
+)
+target_link_libraries(func_pointer_threading
+  pthread
+  m
+)
 
 
 # Music maker example
