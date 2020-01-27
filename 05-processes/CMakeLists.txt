@@ -29,3 +29,7 @@ add_executable(piping
 add_executable(bsh
   src/bizimshell/bsh.c
 )
+
+add_executable(signals-with-fork
+  src/signals-with-fork.c
+)

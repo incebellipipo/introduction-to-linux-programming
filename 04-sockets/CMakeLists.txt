@@ -27,7 +27,3 @@ add_executable(unix-server
 add_executable(unix-client
   src/samples/unix-client.c
 )
-
-add_executable(nc
-  src/nc/nc.c
-)
