@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5.1)
 
 set(CMAKE_CXX_STANDARD 11)
 
-project(05-processes)
+project(05-process-management)
 
 include_directories(include)
 
