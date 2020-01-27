@@ -6,11 +6,17 @@ project(06-multi-threading)
 
 include_directories(include)
 
-add_executable(sample1
-  src/sample1.c
-)
 
-target_link_libraries(sample1 pthread)
+add_executable(mutex_example
+  src/mutex_example.c
+)
+target_link_libraries(mutex_example pthread)
+
+add_executable(simple_multi_threading
+  src/simple_multi_threading.c
+)
+target_link_libraries(simple_multi_threading pthread)
+
 
 # Music maker example
 find_package(SDL2)
