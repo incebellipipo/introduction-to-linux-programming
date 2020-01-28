@@ -21,3 +21,7 @@ add_executable(msg_send
 add_executable(msg_recv
   src/msg_recv.c
 )
+
+add_executable(sem_example
+  src/sem_example.c
+)
