@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <errno.h>
 #include <musicmaker/sound.h>
+#include <musicmaker/util.h>
+
 
 #define NR_CHANNELS 8
 
@@ -73,26 +75,25 @@ void play_sound(void* args) {
   struct play_sound_args *psa = (struct play_sound_args *) args;
   struct play_sound_args *target_psa = find_empty_channel();
   
-
   if(target_psa) {
     nr_active_channels++;
-    printf("active channels : %d\n", nr_active_channels);
     *target_psa = *psa;
+    free(psa);
 
     int duration = target_psa->duration;
     long freq = target_psa->freq;
     long reqFreq = freq;
 
     target_psa->exists = 1;
-    for(int i = 0 ; i < 5; i++) {
-      sleep(duration);
-      if(i % 2 == 0) {
-        fprintf(stdout, "Playing freq: %ld\n", freq);
-        target_psa->sinPos = 0;
-        target_psa->sinStep = 2 * M_PI * reqFreq / FREQ;
-      }
-    }
+    
+    fprintf(stdout, "Playing freq: %ld\n", freq);
+    target_psa->sinPos = 0;
+    target_psa->sinStep = 2 * M_PI * reqFreq / FREQ;
+    sleep_ms(duration);
+    
+    
     target_psa->exists = 0;
     nr_active_channels--;
   }
+  
 }
