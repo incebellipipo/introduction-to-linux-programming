@@ -10,7 +10,7 @@
 int main(int argc, char** argv) {
   fprintf(stdout, "starting\n");
   struct sockaddr_un addr;
-  char buf[1024];
+  char buf[BUFSIZ];
 
   int fd, cl, rc;
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
   fprintf(stdout, "accepted...\n");
 
   do {
-    rc = recv(cl, buf, 1024, 0);
+    rc = recv(cl, buf, BUFSIZ, 0);
     buf[rc] = '\0';
     if( rc < 0 ) {
       perror("recv");

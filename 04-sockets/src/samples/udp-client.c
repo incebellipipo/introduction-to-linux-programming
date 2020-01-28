@@ -10,9 +10,8 @@
 int main(int argc, char** argv) {
 
   int fd;
-  char buf[1024];
+  char buf[BUFSIZ];
   int port = 8080;
-
   struct sockaddr_in servaddr;
 
   if( (fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
@@ -28,9 +27,10 @@ int main(int argc, char** argv) {
 
   len = sizeof(servaddr);
 
+
   sendto(fd, (char*)argv[1], strlen(argv[1]), MSG_CONFIRM, (struct sockaddr*)&servaddr, len);
 
-  n = recvfrom( fd, (char*)buf, 1024, 0, (struct sockaddr*)&servaddr, &len);
+  n = recvfrom( fd, (char*)buf, BUFSIZ, 0, (struct sockaddr*)&servaddr, &len);
   buf[n] = '\0';
   printf("Server[%d]: %s\n", n, buf);
   

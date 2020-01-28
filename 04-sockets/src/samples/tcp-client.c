@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
   int port = 8080;
   int fd = 0;
   struct sockaddr_in serv_addr;
-  char buf[1024] = {0};
+  char buf[BUFSIZ] = {0};
   if(( fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     perror("socket");
     exit(EXIT_FAILURE);
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
   }
 
   write(fd, argv[1], strlen(argv[1]));
-  int ret = read(fd, buf, 1024);
+  int ret = read(fd, buf, BUFSIZ);
 
   fprintf(stdout, "%s\n", buf);
 

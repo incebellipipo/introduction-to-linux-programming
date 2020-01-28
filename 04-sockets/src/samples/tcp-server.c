@@ -43,16 +43,16 @@ int main(int argc, char** argv) {
     exit(EXIT_FAILURE);
   }
 
-  char buf[1024] = {0};
+  char buf[BUFSIZ] = {0};
   int ret;
   do {
-    ret = read(cfd, buf, 1024);
+    ret = read(cfd, buf, BUFSIZ);
     if( ret < 0 ) {
       perror("read");
       exit(EXIT_FAILURE);
     }
     printf("Client[%d]: %s", ret, buf);
-    memset(&buf, 0, 1024);
+    memset(&buf, 0, BUFSIZ);
   } while( ret != 0);
   close(cfd);
   close(fd);

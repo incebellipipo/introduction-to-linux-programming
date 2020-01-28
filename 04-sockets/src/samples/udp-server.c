@@ -10,7 +10,7 @@
 int main(int argc, char** argv) {
 
   int fd;
-  char buf[1024];
+  char buf[BUFSIZ];
   int port = 8080;
 
   struct sockaddr_in servaddr, cliaddr;
@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
 
   len = sizeof(cliaddr);
 
-  n = recvfrom( fd, (char*)buf, 1024, 0, (struct sockaddr*)&cliaddr, &len);
+  n = recvfrom( fd, (char*)buf, BUFSIZ, 0, (struct sockaddr*)&cliaddr, &len);
   buf[n] = '\0';
   printf("Client[%d]: %s\n", n, buf);
   sendto(fd, (char*)buf, strlen(buf), MSG_CONFIRM, (struct sockaddr*)&cliaddr, len);
