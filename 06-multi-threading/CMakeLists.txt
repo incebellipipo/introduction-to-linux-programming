@@ -35,6 +35,7 @@ if(SDL2_LIBRARIES)
     include_directories(${SDL2_INCLUDE_DIRS})
     add_library(musicmaker
         src/musicmaker/sound.c
+        src/musicmaker/util.c
     )
     target_link_libraries(musicmaker
         pthread
