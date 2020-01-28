@@ -6,7 +6,7 @@
 - [File Operations](02-file-operations)
 - [Sockets](03-sockets)
 - [Process Management](04-process-management)
-- [Multi Threading](05-multithreading)
+- [Multithreading](05-multithreading)
 - [Inter Process Communication](06-inter-process-communication)
 
 ## Examples
