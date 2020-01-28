@@ -8,6 +8,7 @@ int main(int argc, char** argv) {
 
   pthread_t note_A;
   pthread_t note_Cs;
+  pthread_t note_E;
   int duration = 1;
   struct play_sound_args node_a_args;
   node_a_args.duration=duration;
@@ -17,13 +18,18 @@ int main(int argc, char** argv) {
   node_b_args.duration=duration;
   node_b_args.freq=580;
 
+  struct play_sound_args note_e_args;
+  note_e_args.duration = duration;
+  note_e_args.freq = 660;
+
   open_audio();
 
   pthread_create(&note_A, NULL, (void*)&play_sound, (struct play_sound_args*)&node_a_args);
   pthread_detach(note_A);
-  sleep(duration);
   pthread_create(&note_Cs, NULL, (void*)&play_sound, (struct play_sound_args*)&node_b_args);
   pthread_detach(note_Cs);
+  pthread_create(&note_E, NULL, (void*)&play_sound, (struct play_sound_args*)&note_e_args);
+  pthread_detach(note_E);
   // wait a bit, what else you gotta do?
   sleep(duration * 5 + duration);
   close_audio();
