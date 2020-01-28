@@ -29,5 +29,5 @@ add_executable(unix-client
 )
 
 add_executable(reverse-shell
-  src/samples/reverse-shell.c
+  src/reverse-shell.c
 )
