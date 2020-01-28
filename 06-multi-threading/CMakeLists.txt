@@ -41,6 +41,7 @@ if(SDL2_LIBRARIES)
         m
         ${SDL2_LIBRARIES}
     )
+
     add_executable(composer
         src/musicmaker/composer.c
     )

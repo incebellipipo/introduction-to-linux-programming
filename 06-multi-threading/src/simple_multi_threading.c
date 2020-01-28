@@ -25,12 +25,19 @@ void print_name(char *n) {
 int main(int argc, char** argv) {
 
   pthread_t t;
-  pthread_create(&t, NULL, (void*)print_date, NULL);
-
+  pthread_create(
+      &t,
+      NULL,
+      (void*)print_date, NULL
+  );
 
   pthread_t n;
-  pthread_create(&n, NULL, (void*)print_name, argv[1] == NULL ? "george" : argv[1]);
-
+  pthread_create(
+      &n,
+      NULL,
+      (void*)print_name, argv[1] == NULL ? "george" : argv[1]
+  );
+ 
 
   sleep(10);
   run = 0;
