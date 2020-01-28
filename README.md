@@ -1,4 +1,4 @@
-# introduction-to-linux-programming
+# Introduction to Linux Programming
 
 ## Topics
 - [Introduction](00-introduction)
