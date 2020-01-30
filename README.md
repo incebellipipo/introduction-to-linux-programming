@@ -17,6 +17,25 @@ How you can contribute:
 - Use [conventional commits](https://www.conventionalcommits.org). _I'm really sensitive about it_.
 - Create pull request as usual.
 
+## Get It Working
+Clone the repository to your home directory:
+```sh
+cd ~
+git clone https://github.com/incebellipipo/introduction-to-linux-programming.git
+```
+Enter the downloaded folder and create a new build folder, then enter the folder you just created:
+```sh
+cd introduction-to-linux-programming/
+mkdir build
+cd build/
+```
+Generate a Makefile with `cmake`. Lastly, build and compile using `make` command:
+```sh
+cmake ..
+make
+```
+Now the executable files, under the build folder, are ready to run.
+
 ## Topics
 - [Introduction](00-introduction)
 - [Develepment Environment](01-development-environment)
