@@ -1,4 +1,21 @@
 # Introduction to Linux Programming
+## Brief
+This repository contains sample codes for [introduction to linux programming workshop](https://kamp.linux.org.tr/2020/kis/kurslar/linux-sistem-programlamaya-giris/) conducted at Anadolu University in January 2020. There were no lecture notes therefore there is no notes in this repository either. However, we are working on to write lecture notes with the collaboration of participants. In the mean time, If you need resources take a look at the [Good Resources](#good-resources) section. Source codes in repository uses both POSIX API and System V API.
+#### Contributing
+Any contribution is welcomed, as always. Most important part is how and what.
+
+This repository needs:
+- Translation. Any translation will be welcomed. You may create `README.<LANG_CODE>.md` file next to `README.md` file.
+- More examples. Yes we need more examples
+- Explanations for examples. I also didn't write what which code does. _Sorry folks™_
+- Resources. Good ones. If you think you know a good resource, let us know.
+
+How you can contribute:
+- Fork this repository _You'll need a github account. If you don't want to create it, clone it, change it, [mail it](mailto:emircem.gezer@gmail.com)._
+- Do what you do
+- Test your code. or I'll. _Please don't make me test your code_
+- Use [conventional commits](https://www.conventionalcommits.org). _I'm really sensitive about it_
+- Create pull request as usual.
 
 ## Topics
 - [Introduction](00-introduction)
