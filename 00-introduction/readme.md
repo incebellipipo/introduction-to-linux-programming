@@ -11,7 +11,7 @@ Example source code located is [arguments.c](src/arguments.c).
 
 ### Gathering more information about errors
 
-If errno.h header file included in C program, errors will be written to `errno` global variable. For more information please refer to `man 2 errno`.
+If errno.h header file included in C program, errors will be written to `errno` global variable. For more information please refer to `man 3 errno`.
 
 ```c
 #include <errno.h>
