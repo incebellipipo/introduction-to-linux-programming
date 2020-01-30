@@ -7,14 +7,14 @@ Any contribution is welcomed, as always. Most important part is how and what.
 This repository needs:
 - Translation. Any translation will be welcomed. You may create `README.<LANG_CODE>.md` file next to `README.md` file.
 - More examples. Yes we need more examples
-- Explanations for examples. I also didn't write what which code does. _Sorry folks™_
+- Explanations for examples. I also didn't write what which code does. _Sorry folks™, didn't have time to write docs, classic._
 - Resources. Good ones. If you think you know a good resource, let us know.
 
 How you can contribute:
 - Fork this repository _You'll need a github account. If you don't want to create it, clone it, change it, [mail it](mailto:emircem.gezer@gmail.com)._
-- Do what you do
-- Test your code. or I'll. _Please don't make me test your code_
-- Use [conventional commits](https://www.conventionalcommits.org). _I'm really sensitive about it_
+- Do what you do.
+- Test your code. or I'll. _You may make me test your code_.
+- Use [conventional commits](https://www.conventionalcommits.org). _I'm really sensitive about it_.
 - Create pull request as usual.
 
 ## Topics
