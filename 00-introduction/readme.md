@@ -47,4 +47,4 @@ We can request additional memory in run-time from OS. This is done by calls like
 ## References
 
 <a id="1">[1]</a> 
-S. Weiss, “Chapter 2: Login Records, File I/O, and Performance,” _UNIX Lecture Notes_. [Online]. Available: http://www.compsci.hunter.cuny.edu/~sweiss/course\_materials/unix\_lecture\_notes/chapter\_02.pdf. [Accessed: Jan. 30, 2020].
+S. Weiss, “Chapter 2: Login Records, File I/O, and Performance,” _UNIX Lecture Notes_. [Online]. Available: http://www.compsci.hunter.cuny.edu/~sweiss/course_materials/unix_lecture_notes/chapter_02.pdf. [Accessed: Jan. 30, 2020].
