@@ -44,6 +44,47 @@ Example source code located is [std-descriptors.c](src/std-descriptors.c).
 
 We can request additional memory in run-time from OS. This is done by calls like `malloc` `calloc` `realloc` and `free`. Example source code located is [memory-allocation.c](src/memory-allocation.c).
 
+`calloc()` takes two arguments, which are the number of elements and the size in bytes of each element. it attempts to allocate space for an array of `nmemb` elements, each of size `size`. It fills the allocated memory with zeros. More: `man 3 calloc`
+```c
+#include <stdlib.h>
+// void *calloc(size_t nmemb, size_t size);
+...
+char* buf;
+buf = (char ∗) calloc(5, sizeof(char));
+free(buf);
+...
+```
+
+`malloc()` is used to dynamically allocate a single large block of memory with a given size `size` containing garbage values. More: `man 3 malloc`
+
+```c
+#include <stdlib.h> /* Required for malloc */
+#include <string.h> /* Required for memset */
+// void *malloc(size_t size);
+...
+int* num;
+num = (int*) malloc(5 * sizeof(int));
+
+// If we want, we can achieve same calloc() functionality by using memset() after malloc()
+memset(num, 0, 5 * sizeof(int)); //optional
+free(num);
+...
+```
+
+`free()` is used to dynamically deallocate the memory. Generally, the OS will reclaim the memory but it is a good practice to use `free()` as soon as you're finished using allocated memory so you can keep your program's memory footprint to a minimum and avoid memory leaks. More: `man 3 free`
+
+If previously allocated memory is insufficient, we can use `realloc()` to dynamically change the memory allocation of a previously allocated memory.
+
+```c
+#include <stdlib.h>
+// void *realloc(void *ptr, size_t size);
+...
+int* num;
+num = (int*) calloc(5, sizeof(int));
+num = realloc(ptr, 10 * sizeof(int));
+...
+```
+
 ## References
 
 <a id="1">[1]</a> 
