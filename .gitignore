@@ -184,5 +184,4 @@ build
 .vscode/launch.json
 .vscode/settings.json
 
-00-introduction/make-example/main
-!00-introduction/make-example/Makefile
+!07-projects/05-make-example/Makefile
