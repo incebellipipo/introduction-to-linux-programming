@@ -50,6 +50,7 @@ Now the executable files, under the build folder, are ready to run.
 - [Music Maker](07-projects/02-musicmaker)
 - [Reverse Shell](07-projects/03-reverse-shell)
 - [Worst Shell](07-projects/04-worst-shell)
+- [Makefile Example](07-projects/05-make-example)
 
 ## Good Resources
 - [Unix Lecture Notes - Stewart Weiss, Associate Professor](http://www.compsci.hunter.cuny.edu/~sweiss/course_materials/unix_lecture_notes.php?fbclid=IwAR3q1vunyp8N2yxauL_pqTGllDxSKBOjl-DrjGcd3A0E5JEuc72djsJDMAw)
