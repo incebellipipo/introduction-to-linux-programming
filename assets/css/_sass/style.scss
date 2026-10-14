@@ -1,0 +1,402 @@
+@use "variables" as *;
+
+/* LaTeX article look, after https://github.com/Hammie217/LatexJekyll */
+
+body {
+  max-width: $content-width;
+  font-family: $base-font-family;
+  margin: 0 auto;
+  line-height: $base-line-height;
+  font-size: $base-font-size;
+  color: $text-color;
+  background-color: $body-bg;
+  padding: 3em 1.25em 2em;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  hyphens: auto;
+
+  @include media-query($on-palm) {
+    font-size: 0.9 * $base-font-size;
+    padding-top: 1.5em;
+  }
+}
+
+/* \maketitle */
+.latex-title {
+  text-align: center;
+  margin-bottom: 2.5em;
+
+  .title {
+    font-size: 2.1em;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 0.6em;
+  }
+  .author, .date {
+    font-size: 1.2em;
+    margin: 0.3em 0;
+  }
+}
+
+/* Navigation, typeset in small caps */
+.links {
+  margin-top: 1em;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+
+  a {
+    color: inherit;
+    margin: 0 0.6em;
+  }
+  a.active {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+/* \section and \subsection, numbered like LaTeX */
+article {
+  counter-reset: section;
+  text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $base-font-family;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 1.6em 0 0.7em;
+  text-align: left;
+}
+h1 { font-size: 1.45em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.05em; }
+
+article h1 {
+  counter-reset: subsection;
+  counter-increment: section;
+  &::before {
+    content: counter(section);
+    margin-right: 1em;
+  }
+}
+article h2 {
+  counter-increment: subsection;
+  &::before {
+    content: counter(section) "." counter(subsection);
+    margin-right: 1em;
+  }
+}
+article.unnumbered h1::before,
+article.unnumbered h2::before,
+article h1.post-headline::before {
+  content: none;
+}
+article h1.post-headline {
+  counter-increment: none;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.6em;
+}
+
+p {
+  margin: 0.8em 0;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+::selection {
+  background: $accent-color;
+  color: $body-bg;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+pre,
+code {
+  font-family: $mono-font-family;
+  overflow: auto;
+  font-size: 0.85em;
+}
+
+pre {
+  padding: 0.8em 1em;
+  border-left: 2px solid $muted-color;
+}
+
+blockquote {
+  margin: 1em 2.5em;
+  font-style: italic;
+}
+
+.meta {
+  color: $muted-color;
+  text-align: center;
+}
+
+/* Bibliography (\begin{thebibliography}) */
+.bibliography {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+
+  li {
+    display: grid;
+    grid-template-columns: 2.5em 1fr;
+    column-gap: 0.5em;
+    margin-bottom: 0.9em;
+  }
+  .label {
+    text-align: right;
+  }
+  .me {
+    font-weight: 700;
+  }
+  .cites {
+    color: $muted-color;
+    font-size: 0.8em;
+    white-space: nowrap;
+  }
+}
+
+.small-print {
+  font-size: 0.8em;
+  color: $muted-color;
+}
+
+/* \begin{description}: bold run-in labels, indented bodies */
+.description {
+  margin: 0 0 1em;
+
+  dt {
+    font-weight: 700;
+    margin-top: 0.9em;
+  }
+  dd {
+    margin: 0.15em 0 0 1.5em;
+  }
+  .refs {
+    font-family: $mono-font-family;
+    font-size: 0.75em;
+    white-space: nowrap;
+  }
+}
+
+/* Pagination style in index/home page */
+.pagination {
+  margin: 2em 0;
+  text-align: center;
+
+  a, span {
+    padding: 0 0.6em;
+    display: inline-block;
+  }
+}
+
+/* Add video class for iframes to make them responsive */
+.video {
+  width: 100%;
+  height: 360px;
+  @include media-query($on-laptop) {
+    height: 300px;
+  }
+  @include media-query($on-palm) {
+    height: 180px;
+  }
+}
+
+/* Horizontal Divider */
+.divider {
+  margin: 1em;
+}
+
+/* Horizontal scrolling navbar. From: https://is.gd/WuJxqy */
+.scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; }
+
+.scroll::-webkit-scrollbar {
+  display: none; }
+
+/* \begin{abstract} */
+.abstract {
+  margin: 0 3em 2.5em;
+  font-size: 0.9em;
+  text-align: justify;
+
+  .abstract-title {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.4em;
+  }
+  p {
+    margin: 0;
+    text-indent: 1.5em;
+  }
+  .keywords {
+    margin-top: 0.6em;
+    text-indent: 0;
+  }
+
+  @include media-query($on-palm) {
+    margin: 0 0.5em 2em;
+  }
+}
+
+/* A range input drawn as a pgfplots-style axis with a mixer fader cap */
+$fader-cap-width:  2.8em;
+$fader-cap-height: 1.5em;
+$fader-height:     4em;   // the whole height is clickable
+
+@mixin fader-axis {
+  height: 2px;
+  background: currentColor;
+}
+
+@mixin fader-cap {
+  box-sizing: border-box;
+  width: $fader-cap-width;
+  height: $fader-cap-height;
+  border: 2px solid currentColor;
+  border-radius: 0.2em;
+  /* indicator line across the axis, with fainter grip ridges beside it */
+  background:
+    linear-gradient(to right, transparent calc(50% - 1px), currentColor calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+    repeating-linear-gradient(to right, transparent 0 0.25em, rgba(128, 128, 128, 0.35) 0.25em calc(0.25em + 1px)) 0.35em 0 / calc(100% - 0.7em) 100% no-repeat,
+    $body-bg;
+  box-shadow: 0 0.15em 0.3em rgba(0, 0, 0, 0.35);
+  cursor: grab;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+@mixin fader-cap-hover {
+  box-shadow: 0 0.15em 0.3em rgba(0, 0, 0, 0.35), 0 0 0 0.35em rgba(128, 128, 128, 0.3);
+}
+
+.latex-slider {
+  max-width: 34em;
+  margin: 2em auto;
+  text-align: center;
+
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: $fader-height;
+    margin: 0;
+    font: inherit;
+    position: relative;
+    z-index: 1; // the cap slides over the ticks
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    &:focus { outline: none; }
+    &:focus-visible { outline: 1px dotted currentColor; outline-offset: 0.3em; }
+
+    &::-webkit-slider-runnable-track { @include fader-axis; }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: calc(1px - #{0.5 * $fader-cap-height}); // centred on the 2px axis
+      @include fader-cap;
+    }
+    &:hover::-webkit-slider-thumb,
+    &:focus-visible::-webkit-slider-thumb { @include fader-cap-hover; }
+    &:active::-webkit-slider-thumb { cursor: grabbing; transform: scale(0.96); }
+
+    &::-moz-range-track { @include fader-axis; }
+    &::-moz-range-thumb { @include fader-cap; }
+    &:hover::-moz-range-thumb,
+    &:focus-visible::-moz-range-thumb { @include fader-cap-hover; }
+    &:active::-moz-range-thumb { cursor: grabbing; transform: scale(0.96); }
+  }
+
+  /* Ticks hang from the axis line: minor every tenth, major at both ends and
+     the origin. Padded by half a cap so they line up with the cap's centre. */
+  .axis {
+    position: relative;
+    margin: -0.5 * $fader-height 0.5 * $fader-cap-width 0;
+    padding-top: 0.55em;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1;
+    background:
+      linear-gradient(currentColor, currentColor) 0 0 / 1px 0.55em no-repeat,
+      linear-gradient(currentColor, currentColor) 50% 0 / 1px 0.55em no-repeat,
+      linear-gradient(currentColor, currentColor) 100% 0 / 1px 0.55em no-repeat,
+      repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 10%) 0 0 / calc(100% + 1px) 0.3em no-repeat;
+
+    span {
+      width: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: 0.25em;
+      font-size: 0.75em;
+    }
+  }
+
+  figcaption {
+    margin-top: 1em;
+    font-size: 0.9em;
+
+    .fig-label { font-weight: 700; }
+    output { white-space: nowrap; }
+  }
+}
+
+/* Light/dark switch in the top left corner, typeset as LaTeX source:
+   \documentclass[light]{webpage}, where the class option is the button */
+.theme-switch-wrap {
+  position: absolute;
+  top: calc(1em + env(safe-area-inset-top, 0px));
+  left: 1.25em;
+  color: $muted-color;
+
+  @include media-query($on-palm) {
+    position: static;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+
+  .tex {
+    font-family: $mono-font-family;
+    font-size: 0.6em;
+  }
+}
+
+.theme-switch {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: $link-color;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+
+  &:hover { color: $link-hover-color; }
+  &:focus { outline: none; }
+  &:focus-visible { outline: 1px dotted currentColor; outline-offset: 0.15em; }
+
+  .opt-dark { display: none; }
+  &[aria-checked="true"] {
+    .opt-light { display: none; }
+    .opt-dark { display: inline; }
+  }
+}

@@ -6,7 +6,7 @@ Now the executable files, under the build folder, are ready to run.
 
 ## Topics
 - [Introduction](00-introduction)
-- [Develepment Environment](01-development-environment)
+- [Development Environment](01-development-environment)
 - [File Operations](02-file-operations)
 - [Sockets](03-sockets)
 - [Process Management](04-process-management)
@@ -47,7 +47,7 @@ Any contribution is welcomed, as always. Most important part is how and what.
 This repository needs:
 - Translation. Any translation will be welcomed. You may create `README.<LANG_CODE>.md` file next to `README.md` file.
 - More examples. Yes we need more examples
-- Explanations for examples. I also didn't write what which code does. _Sorry folks™, didn't have time to write docs, classic._
+- Explanations for examples. I also didn't write what which code does. _Sorry folks(TM), didn't have time to write docs, classic._
 - Resources. Good ones. If you think you know a good resource, let us know.
 
 How you can contribute:

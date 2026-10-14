@@ -1,0 +1,77 @@
+title: Introduction to Linux Programming
+description: "Lecture notes and sample code for the introduction to Linux system programming workshop"
+author: Emir Cem Gezer
+
+# GitHub Pages serves a project site under the repository name. The deploy
+# workflow passes the right value, so this only matters for local previews.
+baseurl: /introduction-to-linux-programming
+
+# Optional: a "Home" link in the menu, e.g. to your own website
+home_url:
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  parse_block_html: false
+  math_engine: mathjax
+
+sass:
+  sass_dir: assets/css/_sass
+  style: compressed
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+  - jekyll-titles-from-headings
+
+# The notes have no front matter, so they still read cleanly on GitHub
+optional_front_matter:
+  remove_originals: true
+relative_links:
+  enabled: true
+  collections: false
+titles_from_headings:
+  enabled: true
+  strip_title: false
+
+# Every chapter keeps its notes next to its code: NN-chapter/readme.md becomes
+# /NN-chapter/. Source files under src/ are copied as they are, so links such
+# as src/cat.c keep working.
+defaults:
+  - scope: { path: "index.md" }
+    values: { layout: doc, permalink: / }
+  - scope: { path: "00-introduction/readme.md" }
+    values: { layout: doc, permalink: /00-introduction/ }
+  - scope: { path: "01-development-environment/readme.md" }
+    values: { layout: doc, permalink: /01-development-environment/ }
+  # a file (not a directory) URL, so that ../00-introduction/src/... links resolve
+  - scope: { path: "01-development-environment/debugging.md" }
+    values: { layout: doc, permalink: /01-development-environment/debugging.html }
+  - scope: { path: "02-file-operations/readme.md" }
+    values: { layout: doc, permalink: /02-file-operations/ }
+  - scope: { path: "03-sockets/readme.md" }
+    values: { layout: doc, permalink: /03-sockets/ }
+  - scope: { path: "04-process-management/readme.md" }
+    values: { layout: doc, permalink: /04-process-management/ }
+  - scope: { path: "05-multithreading/readme.md" }
+    values: { layout: doc, permalink: /05-multithreading/ }
+  - scope: { path: "06-inter-process-communication/readme.md" }
+    values: { layout: doc, permalink: /06-inter-process-communication/ }
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - docker-compose.yml
+  - vendor/
+  - build/
+  - 07-projects/
+  - .devcontainer/
+  - .github/
+  - .vscode/
+  - CMakeLists.txt
+  - "**/CMakeLists.txt"

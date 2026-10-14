@@ -185,3 +185,12 @@ build
 .vscode/settings.json
 
 !07-projects/05-make-example/Makefile
+
+# Jekyll
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+.bundle
+vendor
+Gemfile.lock

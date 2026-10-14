@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <!-- Apply a theme saved with the switch before anything is drawn; otherwise the CSS follows the system -->
+        <script>
+            try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+        </script>
+        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+        {% seo %}
+
+        {% include mathjax.html %}
+    </head>
+
+    <body>
+        <div class="theme-switch-wrap">
+            <span class="tex">\documentclass[<button type="button" class="theme-switch" role="switch" aria-checked="false" aria-label="Dark theme" title="Switch theme"><span class="opt-light">light</span><span class="opt-dark">dark</span></button>]{webpage}</span>
+        </div>
+
+        <header class="latex-title">
+            <p class="title">{{ site.title }}</p>
+            <p class="author">{{ site.author }}</p>
+            <p class="date">{{ site.time | date: '%B %Y' }}</p>
+            <nav class="links scroll">
+                {% if site.home_url %}<a href="{{ site.home_url }}">Home</a>{% endif %}
+                <a href="{{ '/' | relative_url }}"{% if page.url == "/" %} class="active"{% endif %}>Contents</a>
+            </nav>
+        </header>
+
+        <main>
+            <article class="unnumbered">
+                {{ content }}
+            </article>
+        </main>
+
+        <footer>
+          <p class="copy">
+            <small> &copy; {{ site.author }} {{ site.time | date: '%Y' }}
+                    | MIT License
+                    | Powered by Jekyll,
+                    <a target="_blank" href="https://github.com/jitinnair1/gradfolio/">Gradfolio</a> and
+                    <a target="_blank" href="https://github.com/Hammie217/LatexJekyll">LatexJekyll</a>.
+                    Last updated on {{ site.time | date_to_long_string }}
+            </small>
+          </p>
+        </footer>
+
+        <script>
+            (function () {
+                var root = document.documentElement;
+                var button = document.querySelector(".theme-switch");
+                var system = window.matchMedia("(prefers-color-scheme: dark)");
+                function isDark() {
+                    return root.dataset.theme ? root.dataset.theme === "dark" : system.matches;
+                }
+                function sync() { button.setAttribute("aria-checked", isDark()); }
+                sync();
+                // keep the label right if the system theme changes while no choice is saved
+                if (system.addEventListener) system.addEventListener("change", sync);
+                button.addEventListener("click", function () {
+                    var theme = isDark() ? "light" : "dark";
+                    root.dataset.theme = theme;
+                    sync();
+                    try { localStorage.setItem("theme", theme); } catch (e) {}
+                });
+            })();
+        </script>
+
+        {% include mermaid.html %}
+    </body>
+
+</html>

@@ -1,0 +1,120 @@
+/* Additions for the docs: tables, dropdowns, diagrams. Colours use the
+   theme variables from themes.scss, so light and dark both work. */
+
+/* Tables in booktabs style */
+article table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 0.8em;
+  text-align: left;
+}
+article th,
+article td {
+  padding: 0.35em 0.8em;
+  vertical-align: top;
+}
+article thead th {
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+article tbody tr:last-child td {
+  border-bottom: 2px solid var(--ink);
+}
+
+/* Lists in a justified article */
+article li {
+  text-align: left;
+}
+
+/* Code: a shaded panel, like a LaTeX listing, with muted punctuation */
+:root {
+  --code-bg: rgba(46, 46, 44, 0.06);
+  --code-rule: rgba(46, 46, 44, 0.18);
+  --code-key: #1f5f8b;    // JSON keys
+  --code-string: #3d6b2f; // strings
+  --code-literal: #b03040; // true, false, null, numbers
+}
+@mixin code-dark {
+  --code-bg: rgba(255, 255, 255, 0.06);
+  --code-rule: rgba(255, 255, 255, 0.16);
+  --code-key: #8fb8de;
+  --code-string: #a9cf8f;
+  --code-literal: #e8a0aa;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include code-dark; }
+}
+:root[data-theme="dark"] { @include code-dark; }
+
+article pre {
+  white-space: pre;
+  margin: 1em 0 1.2em;
+  padding: 0.9em 1.1em;
+  border: 1px solid var(--code-rule);
+  border-left: 3px solid var(--muted);
+  border-radius: 3px;
+  background: var(--code-bg);
+  font-size: 0.75em;
+  line-height: 1.5;
+  text-align: left;
+}
+article pre code {
+  font-size: 1em; // the size is set on <pre>
+}
+article div.highlighter-rouge,
+article div.highlight {
+  margin: 0;
+}
+
+article :not(pre) > code {
+  overflow: visible;
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  background: var(--code-bg);
+  font-size: 0.8em;
+}
+
+.highlight {
+  .p, .w, .err { color: inherit; background: none; } // punctuation, space, partial snippets
+  .p { color: var(--muted); }
+  .nl, .nt, .na { color: var(--code-key); }
+  .s, .s1, .s2, .sx { color: var(--code-string); }
+  .se { color: var(--code-string); font-weight: 700; }
+  .kc, .mi, .mf, .m { color: var(--code-literal); }
+}
+
+/* "Complete request" dropdowns */
+article details {
+  margin: 1em 0 1.6em;
+  padding-left: 1em;
+  border-left: 2px solid var(--muted);
+}
+article summary {
+  cursor: pointer;
+  color: var(--link);
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+article summary:hover {
+  color: var(--link-hover);
+}
+article details[open] summary {
+  margin-bottom: 0.5em;
+}
+
+/* Diagrams and display maths */
+.mermaid-diagram {
+  margin: 1.5em 0;
+  text-align: center;
+}
+.mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

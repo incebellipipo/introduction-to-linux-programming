@@ -1,0 +1,46 @@
+<!-- Draw ```mermaid blocks, coloured from the page theme, and redraw when the theme switches -->
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+    const blocks = [...document.querySelectorAll("code.language-mermaid, .language-mermaid code")];
+    const diagrams = blocks.map((code) => {
+        const box = document.createElement("div");
+        box.className = "mermaid-diagram";
+        box.dataset.source = code.textContent;
+        // Replace the whole code block, including its <pre> frame
+        const block = code.closest("div.language-mermaid") || code.closest("pre") || code;
+        block.replaceWith(box);
+        return box;
+    });
+
+    async function draw() {
+        await document.fonts.ready; // measure labels in the page font, not a fallback
+        const css = getComputedStyle(document.documentElement);
+        const color = (name) => css.getPropertyValue(name).trim();
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: "base",
+            fontFamily: getComputedStyle(document.body).fontFamily,
+            themeVariables: {
+                background: color("--bg"),
+                primaryColor: color("--bg"),
+                primaryTextColor: color("--ink"),
+                primaryBorderColor: color("--ink"),
+                lineColor: color("--muted"),
+                textColor: color("--ink"),
+                edgeLabelBackground: color("--bg"),
+            },
+        });
+        for (const [i, box] of diagrams.entries()) {
+            const { svg } = await mermaid.render(`diagram-${i}-${Date.now()}`, box.dataset.source);
+            box.innerHTML = svg;
+        }
+    }
+
+    if (diagrams.length) {
+        draw();
+        // The theme switch runs first, then this redraws in the new colours
+        document.querySelector(".theme-switch")?.addEventListener("click", () => draw());
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => draw());
+    }
+</script>

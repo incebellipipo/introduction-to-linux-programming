@@ -1,0 +1,31 @@
+/* Computer Modern Unicode, from https://github.com/Hammie217/LatexJekyll */
+@font-face {
+  font-family: 'CMU Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/cmu/cmunrm-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'CMU Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/cmu/cmunbx-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'CMU Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/cmu/cmunti-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'CMU Serif';
+  font-style: italic;
+  font-weight: 700;
+  src: url(../fonts/cmu/cmunbi-webfont.woff) format('woff');
+}
+@font-face {
+  font-family: 'CMU Typewriter';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/cmu/cmuntt-webfont.woff) format('woff');
+}

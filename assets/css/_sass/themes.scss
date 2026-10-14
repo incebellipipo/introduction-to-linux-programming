@@ -1,0 +1,29 @@
+/* Colour themes. The default follows the system setting; the switch sets
+   data-theme="light" or "dark" on <html>. Light palette after silentroom.media. */
+:root {
+  --bg: #F5F2EC;          // warm paper
+  --ink: #2E2E2C;
+  --muted: #6B6560;
+  --link: #B03040;        // deep raspberry, readable as text
+  --link-hover: #E14F62;  // raspberry
+  --accent: #E14F62;
+  --projectbox: #FAF4D5;
+  color-scheme: light;
+}
+
+@mixin dark {
+  --bg: #2a2a2b;
+  --ink: #ddd;
+  --muted: #999;
+  --link: #8fa8ec;
+  --link-hover: #b5c6f3;
+  --accent: #8fa8ec;
+  --projectbox: #444446;
+  color-scheme: dark;
+}
+
+// Follow the system setting unless the visitor picked a theme with the switch
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark; }
+}
+:root[data-theme="dark"] { @include dark; }

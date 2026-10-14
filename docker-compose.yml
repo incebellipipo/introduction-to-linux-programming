@@ -1,0 +1,18 @@
+# Preview the site locally: docker compose up
+# then open http://localhost:4000/introduction-to-linux-programming/
+services:
+  site:
+    image: ruby:3.3
+    working_dir: /srv/site
+    command: >
+      bash -c "bundle install &&
+               bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling"
+    ports:
+      - "4000:4000"   # the site
+      - "35729:35729" # live reload
+    volumes:
+      - .:/srv/site
+      - gems:/usr/local/bundle # keep installed gems between runs
+
+volumes:
+  gems:

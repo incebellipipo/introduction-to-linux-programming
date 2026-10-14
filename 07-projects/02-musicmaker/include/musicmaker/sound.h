@@ -89,7 +89,7 @@
 
 
 
-SDL_AudioSpec spec;
+extern SDL_AudioSpec spec;
 
 /* These are the audio card settings */
 #define FREQ 44100

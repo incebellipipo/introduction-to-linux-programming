@@ -9,6 +9,8 @@
 
 #define NR_CHANNELS 8
 
+SDL_AudioSpec spec;
+
 struct play_sound_args sound_args[NR_CHANNELS] = {0};
 int nr_active_channels = 0;
 

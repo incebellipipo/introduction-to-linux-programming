@@ -39,6 +39,6 @@ void destroy_server(struct fantasy_server* _server);
 void main_loop();
 
 // Global variables
-int server_file_;
+extern int server_file_;
 
 #endif

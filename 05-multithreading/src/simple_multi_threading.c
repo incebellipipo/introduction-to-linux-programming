@@ -6,8 +6,10 @@
 #include <sys/types.h>
 #include <signal.h>
 
+// Flag telling the workers to stop (should be volatile/atomic in real code)
 int run = 1;
 
+// Worker 1: print the unix time every second
 void print_date() {
   while(run) {
     fprintf(stdout, "[unix timestamp: %ld]\n", time(NULL));
@@ -15,6 +17,7 @@ void print_date() {
   }
 }
 
+// Worker 2: receives its argument as a void* and prints it
 void print_name(char *n) {
   while(run) {
     fprintf(stdout, "name: %s\n", n);
@@ -24,6 +27,7 @@ void print_name(char *n) {
 
 int main(int argc, char** argv) {
 
+  // Each pthread_create starts a thread running the given function with one argument
   pthread_t t;
   pthread_create(
       &t,
@@ -39,9 +43,12 @@ int main(int argc, char** argv) {
   );
  
 
+  // Main thread lets the workers run for 10 seconds...
   sleep(10);
+  // ...then asks them to stop
   run = 0;
 
+  // Wait until each worker has returned
   pthread_join(t, NULL);
   pthread_join(n, NULL);
 

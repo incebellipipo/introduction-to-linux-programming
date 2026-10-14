@@ -1,0 +1,13 @@
+@use "variables" as *;
+
+/* Footer */
+footer {
+    clear: both;
+    margin-top: 2em;
+}
+
+/* Footer copyrights */
+.copy {
+    color: $muted-color;
+    text-align: center;
+}

@@ -10,6 +10,9 @@
 #include <pthread.h>
 #include <signal.h>
 
+// Global variables
+int server_file_;
+
 struct fantasy_server* init_server(u_int16_t port) {
   struct fantasy_server *_server; 
   _server = (struct fantasy_server*) malloc(sizeof(struct fantasy_server));
